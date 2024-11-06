@@ -90,3 +90,43 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
     return connection
+
+
+def main():
+    """
+    Main function to connect to the database, retrieve user data,
+    and log it with redacted fields.
+    """
+    db = get_db()
+    cursor = db.cursor()
+
+    # Execute the query to fetch all rows in the users table
+    cursor.execute("SELECT * FROM users;")
+
+    # Loop through the rows and log the filtered (redacted) data
+    for row in cursor:
+        # Convert row into a dictionary with appropriate field names
+        user_data = {
+            'name': row[0],
+            'email': row[1],
+            'phone': row[2],
+            'ssn': row[3],
+            'password': row[4],
+            'ip': row[5],
+            'last_login': row[6],
+            'user_agent': row[7]
+        }
+
+        # Format the log message
+        log_message = f"name={user_data['name']}; email={user_data['email']}; phone={user_data['phone']}; ssn={user_data['ssn']}; password={user_data['password']}; ip={user_data['ip']}; last_login={user_data['last_login']}; user_agent={user_data['user_agent']};"
+
+        # Redact sensitive fields in the log message
+        logger = get_db()  # Get logger instance
+        logger.info(filter_datum(PII_FIELDS, "***", log_message, ";"))
+
+    cursor.close()
+    db.close()
+
+
+if __name__ = "__main__":
+    main()
