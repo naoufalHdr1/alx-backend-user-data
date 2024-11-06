@@ -118,7 +118,16 @@ def main():
         }
 
         # Format the log message
-        log_message = f"name={user_data['name']}; email={user_data['email']}; phone={user_data['phone']}; ssn={user_data['ssn']}; password={user_data['password']}; ip={user_data['ip']}; last_login={user_data['last_login']}; user_agent={user_data['user_agent']};"
+        log_message = (
+                f"name={user_data['name']}; "
+                f"email={user_data['email']}; "
+                f"phone={user_data['phone']}; "
+                f"ssn={user_data['ssn']}; "
+                f"password={user_data['password']}; "
+                f"ip={user_data['ip']}; "
+                f"last_login={user_data['last_login']}; "
+                f"user_agent={user_data['user_agent']};"
+        )
 
         # Redact sensitive fields in the log message
         logger = get_db()  # Get logger instance
