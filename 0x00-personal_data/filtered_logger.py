@@ -7,6 +7,10 @@ import re
 import logging
 
 
+# PII_FIELDS constant containing fields that need to be redacted
+PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
+
+
 def filter_datum(
         fields: List[str],
         redaction: str,
@@ -36,7 +40,28 @@ class RedactingFormatter(logging.Formatter):
         self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
-        record.msg = filter_datum(
-                self.fields, self.REDACTION, record.msg, self.SEPARATOR
-                )
-        return super().format(record)
+        """
+        Redacts sensitive fields in the log record message.
+        """
+        msg = super().format(record)
+        txt = filter_datum(self.fields, self.REDACTION, msg, self.SEPARATOR)
+        return txt
+
+
+def get_logger() -> logging.Logger:
+    """
+    Creates a new logger for user data.
+    """
+
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+    # StreamHandler
+    stream_handler = logging.StreamHandler()
+    formatter = RedactingFormatter(PII_FIELDS)
+    stream_handler.setFormatter(formatter)
+
+    logger.addHandler(stream_handler)
+
+    return logger
