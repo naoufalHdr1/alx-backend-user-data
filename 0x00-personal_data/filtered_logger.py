@@ -78,11 +78,7 @@ def get_db():
     db_username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
     db_password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
     db_host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
-    db_name = os.getenv('PERSONAL_DATA_DB_NAME')
-
-    # Check if the db_name is provided in the environment
-    if not db_name:
-        raise ValueError("Database name (PERSONAL_DATA_DB_NAME) is required")
+    db_name = os.getenv('PERSONAL_DATA_DB_NAME', '')
 
     # Establishing a connection to the database
     connection = mysql.connector.connect(
