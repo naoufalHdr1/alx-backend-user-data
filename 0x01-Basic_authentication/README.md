@@ -75,3 +75,51 @@ curl "http://0.0.0.0:5000/api/v1/forbidden"
 ```json
 {"error": "Forbidden"}
 ```
+
+## Task 3: Auth class
+
+1. Folder and File Creation:
+- Create a folder `api/v1/auth`.
+- Inside it, create an empty file `api/v1/auth/__init__.py`.
+
+2. Class Definition:
+- In `api/v1/auth/auth.py`, define a class `Auth` with the following methods:
+    - `require_auth(self, path: str, excluded_paths: List[str]) -> bool`:
+    Returns `False` (`path` and `excluded_paths` are placeholders for future implementation).
+    - `authorization_header(self, request=None) -> str`:
+    Returns `None` (request is the Flask request object).
+    - `current_user(self, request=None) -> TypeVar('User')`:
+    Returns `None` (request is the Flask request object).
+
+3. Testing:
+
+- Run a `main_0.py` file from `mains/`:
+- Expected output:
+```bash
+False
+None
+None
+```
+
+## Task 4:  Define which routes don't need authentication
+
+1. Method Update:
+Update the `require_auth(self, path: str, excluded_paths: List[str]) -> bool` method in the `Auth` class with the following logic:
+- Return `True` if `path` is `None`.
+- Return `True` if `excluded_paths` is `None` or empty.
+- Return `False` if `path` is in `excluded_paths`.
+- Ensure the method is slash tolerant:
+    - If `path = /api/v1/status` and `excluded_paths` contains `/api/v1/status/`, it should return `False` because the path `/api/v1/status` and `/api/v1/status/` are considered equivalent.
+
+2. Test Script:
+- Run `main_1.py` file in `/mains`:
+- Expected Output:
+```bash
+True
+True
+True
+False
+False
+True
+True
+```
