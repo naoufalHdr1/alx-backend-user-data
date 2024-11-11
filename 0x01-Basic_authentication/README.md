@@ -123,3 +123,23 @@ False
 True
 True
 ```
+
+## Task 5: Request validation!
+
+1. Update `authorization_header`:
+- Return `None` if `request` is `None` or missing `Authorization` header; otherwise, return the header’s value.
+
+2. Configure `auth` in `api/v1/app.py`:
+- Set `auth` based on `AUTH_TYPE` environment variable (initialize `Auth` if needed).
+
+3. Filter Requests with `before_request`:
+- Skip filtering if `auth` is `None` or `request.path` is allowed (`/api/v1/status/`, `/api/v1/unauthorized/`, `/api/v1/forbidden/`).
+- Check if path requires auth using `auth.require_auth`.
+- If `auth.authorization_header(request)` is `None`, abort with `401`.
+- If `auth.current_user(request)` is `None`, abort with `403`.
+
+4. Testing:
+- Start server with `AUTH_TYPE=auth`, then test:
+`/api/v1/status`: Returns `{"status": "OK"}`.
+`/api/v1/users` without Authorization: `{"error": "Unauthorized"}`.
+`/api/v1/users` with Authorization: `{"error": "Forbidden"}`.

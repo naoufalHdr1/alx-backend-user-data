@@ -7,11 +7,44 @@ from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
 import os
+from api.v1.auth.auth import Auth
 
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+
+# Initialize `auth` based on `AUTH_TYPE`
+auth = None
+AUTH_TYPE = getenv("AUTH_TYPE")
+
+if AUTH_TYPE == "auth":
+    auth = Auth()
+
+
+@app.before_request
+def before_request():
+    """Filter requests based on authentication requirements."""
+    if auth is None:
+        return
+
+    excluded_paths = [
+            '/api/v1/status/',
+            '/api/v1/unauthorized/',
+            '/api/v1/forbidden/'
+    ]
+
+    # Check if request path needs authentication
+    if not auth.require_auth(request.path, excluded_paths):
+        return
+
+    # Check for authorization header
+    if auth.authorization_header(request) is None:
+        abort(401, description="Unauthorized")
+
+    # Check for current user (authentication)
+    if auth.current_user(request) is None:
+        abort(403, description="Forbidden")
 
 
 @app.errorhandler(404)
