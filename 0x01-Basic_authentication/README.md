@@ -41,15 +41,37 @@ By the end of this project, you should be able to:
     - In `api/v1/views/index.py`, add a `GET /api/v1/unauthorized` route that triggers a 401 error with `abort(401)`.
 
 3. Test:
-Run the app:
+- Run the app:
 ```bash
 API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
 ```
-Test with:
+- Test with:
 ```bash
 curl "http://0.0.0.0:5000/api/v1/unauthorized"
 ```
-Expect:
+- Expect:
 ```json
 {"error": "Unauthorized"}
+```
+
+## Task 2: Error handler: Forbidden
+
+1. Update `api/v1/app.py`:
+    - Add an error handler for the 403 status code, returning: `{"error": "Forbidden"}` using Flask's `jsonify`.
+
+2. Create Endpoint:
+    - In `api/v1/views/index.py`, add a `GET /api/v1/forbidden` route that triggers a 403 error with `abort(403)`.
+
+3. Test:
+- Run the app:
+```bash
+API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
+```
+- Test with:
+```bash
+curl "http://0.0.0.0:5000/api/v1/forbidden"
+```
+- Expect:
+```json
+{"error": "Forbidden"}
 ```
