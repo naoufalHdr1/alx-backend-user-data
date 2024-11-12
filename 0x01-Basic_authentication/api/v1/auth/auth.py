@@ -3,6 +3,7 @@
 """
 from flask import request
 from typing import List, TypeVar
+import fnmatch
 
 
 class Auth():
@@ -27,7 +28,8 @@ class Auth():
                     excluded_path if excluded_path.endswith('/')
                     else excluded_path + '/'
             )
-            if normalized_path == normalized_excluded_path:
+            # Use fnmatch to compare the paths, allowing wildcard matching
+            if fnmatch.fnmatch(normalized_path, normalized_excluded_path):
                 return False
 
         return True

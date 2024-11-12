@@ -199,3 +199,8 @@ With this update, the API is fully protected by Basic Authentication. The `curre
 ## Task 12: Basic - Allow password with ":" `#advanced`
 
 Modify the `extract_user_credentials` method in the `BasicAuth` class to correctly parse passwords containing colons (`:`) from the Base64 decoded authorization header. The method should split the string at the first colon, allowing passwords with colons to be handled properly.
+
+## Task 13: Require auth with stars
+
+Modify the `require_auth` method in the `BasicAuth` class to support wildcards (`*`) at the end of `excluded_paths`. This allows for partial path matches, where paths like:
+- `/api/v1/stat*` exclude all paths starting with `/api/v1/stat` (e.g., `/api/v1/status`, `/api/v1/stats`, etc.).
