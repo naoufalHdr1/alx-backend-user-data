@@ -158,3 +158,11 @@ True
 Create the `extract_base64_authorization_header` method within the `BasicAuth` class to parse and return the Base64-encoded part of the Authorization header for Basic Authentication:
 - Return `None` if the header is `None`, not a string, or doesn’t start with `"Basic "`.
 - Otherwise, return the part of the header after `"Basic "`.
+
+## Task 8: Basic - Base64 decode
+
+Add a method `decode_base64_authorization_header` in the `BasicAuth` class to decode a Base64 string:
+- Return `None` if `base64_authorization_header` is `None`, not a string, or not valid Base64 (use `try/except` for validation).
+- Otherwise, return the decoded string in UTF-8 format `(decode('utf-8'))`.
+
+This prepares the BasicAuth class for handling Base64-encoded credentials in Basic Authentication headers.
