@@ -174,3 +174,13 @@ Add the `extract_user_credentials` method in the `BasicAuth` class to retrieve t
 - Otherwise, split the string at the colon and return the email and password as a tuple.
 
 This prepares the BasicAuth class to handle and parse credentials from Basic Authentication headers.
+
+## Task 10: Basic - User object
+
+Add the `user_object_from_credentials` method in the BasicAuth class to retrieve a `User` instance based on the provided email and password:
+- Return `None` if the `user_email` or `user_pwd` is `None` or not a string.
+- Return `None` if the user with the given email doesn't exist in the database (using `User.search` method).
+- Return `None` if the password doesn't match the user's stored password (using the `is_valid_password method`).
+- Otherwise, return the `User` instance found in the database.
+
+This method helps validate the credentials and fetch the corresponding user object.
