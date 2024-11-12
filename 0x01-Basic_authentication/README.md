@@ -184,3 +184,14 @@ Add the `user_object_from_credentials` method in the BasicAuth class to retrieve
 - Otherwise, return the `User` instance found in the database.
 
 This method helps validate the credentials and fetch the corresponding user object.
+
+## Task 11: Basic - Overload `current_user` - and BOOM!
+
+Add the `current_user` method to the `BasicAuth` class to overload the `Auth` class and retrieve the current `User` instance for a request:
+1. Use the `authorization_header` from the request.
+2. Use the `extract_base64_authorization_header` method to get the Base64-encoded part of the header.
+3. Decode the Base64 string using `decode_base64_authorization_header`.
+4. Extract the user credentials (email and password) from the decoded string using `extract_user_credentials`.
+5. Retrieve the corresponding User object using `user_object_from_credentials`.
+
+With this update, the API is fully protected by Basic Authentication. The `current_user` method allows the API to identify and authenticate users based on the provided credentials.
