@@ -143,3 +143,12 @@ True
 `/api/v1/status`: Returns `{"status": "OK"}`.
 `/api/v1/users` without Authorization: `{"error": "Unauthorized"}`.
 `/api/v1/users` with Authorization: `{"error": "Forbidden"}`.
+
+## Task 6: Basic auth
+
+1. Create BasicAuth Class:
+- Add a new class `BasicAuth` inheriting from `Auth` in `api/v1/auth/basic_auth.py`. For now, this class remains empty.
+
+2. Update `api/v1/app.py` to Use BasicAuth:
+- Import `BasicAuth` if `AUTH_TYPE` is set to `"basic_auth"`.
+- Initialize auth as an instance of `BasicAuth` if `AUTH_TYPE` is `"basic_auth"`; otherwise, continue using `Auth`.
