@@ -166,3 +166,11 @@ Add a method `decode_base64_authorization_header` in the `BasicAuth` class to de
 - Otherwise, return the decoded string in UTF-8 format `(decode('utf-8'))`.
 
 This prepares the BasicAuth class for handling Base64-encoded credentials in Basic Authentication headers.
+
+## Task 9: Basic - User credentials
+
+Add the `extract_user_credentials` method in the `BasicAuth` class to retrieve the user email and password from a decoded Base64 string:
+- Return `(None, None)` if `decoded_base64_authorization_header` is `None`, not a string, or doesn't contain a colon (`:`).
+- Otherwise, split the string at the colon and return the email and password as a tuple.
+
+This prepares the BasicAuth class to handle and parse credentials from Basic Authentication headers.
