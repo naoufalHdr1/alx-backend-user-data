@@ -152,3 +152,9 @@ True
 2. Update `api/v1/app.py` to Use BasicAuth:
 - Import `BasicAuth` if `AUTH_TYPE` is set to `"basic_auth"`.
 - Initialize auth as an instance of `BasicAuth` if `AUTH_TYPE` is `"basic_auth"`; otherwise, continue using `Auth`.
+
+## Task 7: Basic - Base64 part
+
+Create the `extract_base64_authorization_header` method within the `BasicAuth` class to parse and return the Base64-encoded part of the Authorization header for Basic Authentication:
+- Return `None` if the header is `None`, not a string, or doesn’t start with `"Basic "`.
+- Otherwise, return the part of the header after `"Basic "`.
