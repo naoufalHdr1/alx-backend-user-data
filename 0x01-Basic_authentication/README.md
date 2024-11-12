@@ -195,3 +195,7 @@ Add the `current_user` method to the `BasicAuth` class to overload the `Auth` cl
 5. Retrieve the corresponding User object using `user_object_from_credentials`.
 
 With this update, the API is fully protected by Basic Authentication. The `current_user` method allows the API to identify and authenticate users based on the provided credentials.
+
+## Task 12: Basic - Allow password with ":" `#advanced`
+
+Modify the `extract_user_credentials` method in the `BasicAuth` class to correctly parse passwords containing colons (`:`) from the Base64 decoded authorization header. The method should split the string at the first colon, allowing passwords with colons to be handled properly.
