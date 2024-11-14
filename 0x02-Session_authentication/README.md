@@ -40,3 +40,15 @@ Key Steps:
 - **Route Update:** Adjust `GET /api/v1/users/<user_id>`:
     - If `<user_id>` is `"me"` and `request.current_user` is `None`, return `404`.
     - If `"me"` and `request.current_user` is set, return the authenticated user.
+
+### Task 1: Empty session
+
+Create a new `SessionAuth` class for session-based authentication, inheriting from the `Auth` class. Configure the app to use `SessionAuth` if the `AUTH_TYPE` environment variable is set to `"session_auth"`.
+
+Steps:
+
+- **Create `SessionAuth` Class**: Define an empty `SessionAuth` class that inherits from `Auth` to set up session-based authentication.
+- **Switch Authentication Types:** Update `api/v1/app.py` to check `AUTH_TYPE`:
+    - Import and assign `SessionAuth` to `auth` if `AUTH_TYPE` is `"session_auth"`.
+    - Otherwise, retain the previous authentication mechanism.
+- **Test:** Validate the `SessionAuth` implementation by setting `AUTH_TYPE=session_auth` and confirming the expected responses for authorized and unauthorized requests.
