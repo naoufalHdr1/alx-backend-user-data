@@ -80,3 +80,10 @@ Add a method `user_id_for_session_id(self, session_id: str)` to:
 - Use `.get()` to fetch the user ID associated with the given `session_id` from the `user_id_by_session_id` dictionary.
 
 This addition complements the `create_session` method, allowing seamless storage and retrieval of user-session relationships.
+
+### Task 4: Session cookie
+
+Update `api/v1/auth/auth.py` to include the `session_cookie` method, which retrieves the value of the `_my_session_id` cookie from incoming requests. The cookie name is defined by the `SESSION_NAME` environment variable.
+
+- Returns `None` if the request is `None` or if the cookie is missing.
+- Fetches the cookie value using `request.cookies.get()`.
