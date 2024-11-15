@@ -92,3 +92,11 @@ Update `api/v1/auth/auth.py` to include the `session_cookie` method, which retri
 
 - Exclude `/api/v1/auth_session/login/` from authentication checks.
 - Abort with 401 Unauthorized if both `authorization_header(request)` and `session_cookie(request)` return `None`.
+
+### Task 6: Use Session ID for identifying a User
+
+Retrieve a `User` instance based on the session cookie.
+- Add a `current_user(request=None)` method to the `SessionAuth` class.
+- Use `self.session_cookie(request)` to extract the session ID from the cookie.
+- Use `self.user_id_for_session_id(session_id)` to get the corresponding User ID.
+- Retrieve the `User` instance using `User.get(User ID)`.
