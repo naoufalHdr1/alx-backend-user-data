@@ -68,3 +68,15 @@ Implement `create_session(user_id: str)` to:
 - Allow multiple Session IDs per `user_id`.
 
 This update enables in-memory session management and retrieval of `user_id` using Session IDs.
+
+
+### Task 3: User ID for Session ID
+
+Enhance the `SessionAuth` class with a method to retrieve the user ID linked to a session ID.
+
+1. User ID Retrieval:
+Add a method `user_id_for_session_id(self, session_id: str)` to:
+- Return `None` if `session_id` is `None` or not a string.
+- Use `.get()` to fetch the user ID associated with the given `session_id` from the `user_id_by_session_id` dictionary.
+
+This addition complements the `create_session` method, allowing seamless storage and retrieval of user-session relationships.
