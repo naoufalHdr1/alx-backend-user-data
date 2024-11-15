@@ -87,3 +87,8 @@ Update `api/v1/auth/auth.py` to include the `session_cookie` method, which retri
 
 - Returns `None` if the request is `None` or if the cookie is missing.
 - Fetches the cookie value using `request.cookies.get()`.
+
+### Task 5: Before request
+
+- Exclude `/api/v1/auth_session/login/` from authentication checks.
+- Abort with 401 Unauthorized if both `authorization_header(request)` and `session_cookie(request)` return `None`.
