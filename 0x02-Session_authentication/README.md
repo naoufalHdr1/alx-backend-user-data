@@ -52,3 +52,19 @@ Steps:
     - Import and assign `SessionAuth` to `auth` if `AUTH_TYPE` is `"session_auth"`.
     - Otherwise, retain the previous authentication mechanism.
 - **Test:** Validate the `SessionAuth` implementation by setting `AUTH_TYPE=session_auth` and confirming the expected responses for authorized and unauthorized requests.
+
+### Task 2: Create a session
+
+Enhance the `SessionAuth` class to manage user sessions using a dictionary for storing session data.
+
+1. User-Session Mapping:
+Add a class attribute `user_id_by_session_id`, initialized as an empty dictionary, to map Session IDs to user IDs.
+
+2. Session Creation:
+Implement `create_session(user_id: str)` to:
+- Return `None` if `user_id` is invalid.
+- Generate a unique Session ID using `uuid4()`.
+- Map the Session ID to the `user_id` in the `user_id_by_session_id` dictionary.
+- Allow multiple Session IDs per `user_id`.
+
+This update enables in-memory session management and retrieval of `user_id` using Session IDs.
