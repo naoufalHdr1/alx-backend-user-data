@@ -100,3 +100,18 @@ Retrieve a `User` instance based on the session cookie.
 - Use `self.session_cookie(request)` to extract the session ID from the cookie.
 - Use `self.user_id_for_session_id(session_id)` to get the corresponding User ID.
 - Retrieve the `User` instance using `User.get(User ID)`.
+
+### Task 7: New view for Session Authentication
+
+Implement a route in `api/v1/views/session_auth.py` for user login using Session Authentication.
+
+1. Request Validation:
+- Check `email` and `password` from `request.form.get()`.
+- Return errors (`400`, `404`, or `401`) for missing fields, nonexistent users, or incorrect passwords.
+
+2. Session Handling:
+- Use `auth.create_session(user_id)` to generate a session ID.
+- Set the session cookie using `SESSION_NAME` from the environment.
+- Return the user's JSON (`User.to_json()`).
+
+Valid logins create a session, set a browser-compatible cookie, and return the user’s details.
