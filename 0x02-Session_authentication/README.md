@@ -129,3 +129,21 @@ Valid logins create a session, set a browser-compatible cookie, and return the u
     - Returns `404` if `destroy_session` fails; otherwise, returns `{}` with status `200`.
 
 Users can log out by deleting their session, removing the need to send credentials for protected routes after login.
+
+### Task 9: Expiration? `#advanced`
+
+1. Create `SessionExpAuth` Class:
+- **Inherits** from `SessionAuth` (file: `session_exp_auth.py`).
+- **Initialization** (`__init__`):
+    - Adds `session_duration`, set from the `SESSION_DURATION` environment variable (default to `0` if invalid).
+- **Override** `create_session(user_id)`:
+    - Generates a session ID using `super()` and stores it in `user_id_by_session_id` as a dictionary with:
+        - `user_id` and `created_at` (current datetime).
+- **Override** `user_id_for_session_id(session_id)`:
+    - Checks for session validity based on `session_duration`:
+        - Returns `user_id` if valid, or `None` if expired or invalid.
+
+2. Update `app.py`:
+- Use `SessionExpAuth` for authentication when `AUTH_TYPE=session_exp_auth`.
+
+**Result:** Users with expired sessions will receive a "Forbidden" response for protected API routes.
