@@ -1,4 +1,4 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 """ Session authentication with expiration and storage support module
 for the API.
 """
