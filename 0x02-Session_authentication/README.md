@@ -115,3 +115,17 @@ Implement a route in `api/v1/views/session_auth.py` for user login using Session
 - Return the user's JSON (`User.to_json()`).
 
 Valid logins create a session, set a browser-compatible cookie, and return the user’s details.
+
+### Task 8: Logout
+
+1. Update SessionAuth:
+- Add `destroy_session(request)`:
+    - Returns `False` if `request` is `None`, the session cookie is missing, or the Session ID isn’t linked to a User ID.
+    - Deletes the Session ID from `self.user_id_by_session_id` and returns `True`.
+
+2. Add Logout Route:
+- `DELETE /api/v1/auth_session/logout`:
+    - Calls `auth.destroy_session(request)`.
+    - Returns `404` if `destroy_session` fails; otherwise, returns `{}` with status `200`.
+
+Users can log out by deleting their session, removing the need to send credentials for protected routes after login.
