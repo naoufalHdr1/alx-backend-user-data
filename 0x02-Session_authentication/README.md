@@ -147,3 +147,20 @@ Users can log out by deleting their session, removing the need to send credentia
 - Use `SessionExpAuth` for authentication when `AUTH_TYPE=session_exp_auth`.
 
 **Result:** Users with expired sessions will receive a "Forbidden" response for protected API routes.
+
+### Task 10: Sessions in database `#advanced`
+
+1. UserSession Model
+- Inherits `Base`.
+- Attributes: `user_id` (string), `session_id` (string).
+- Constructor initializes `user_id` and `session_id`.
+
+2. SessionDBAuth Class
+- Inherits `SessionExpAuth`.
+**Methods:**
+    - `create_session(user_id=None)`: Creates a session, stores it in the database, and returns the session ID.
+    - `user_id_for_session_id(session_id=None)`: Returns `user_id` by querying `UserSession` in the database.
+    - `destroy_session(request=None)`: Deletes the session from the database using the cookie's `session_id`.
+
+3. Update `app.py`
+- Use `SessionDBAuth` when `AUTH_TYPE=session_db_auth`.

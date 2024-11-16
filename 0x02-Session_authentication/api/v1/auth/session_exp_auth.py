@@ -12,8 +12,6 @@ class SessionExpAuth(SessionAuth):
     """
     SessionAuth class inherits from Auth for session-based authentication.
     """
-    # Class attribute for storing user_id by session_id
-    user_id_by_session_id = {}
 
     def __init__(self):
         """ Initialize the session with a duration."""
