@@ -27,3 +27,13 @@ Build a `User` model mapped to the `users` table with these attributes:
 - `session_id` and `reset_token`: Nullable strings.
 
 The script should print the table name and column details.
+
+### Task 1:
+
+Complete the `DB` class by implementing the `add_user` method. This method:
+
+- Accepts `email` and `hashed_password` as string arguments.
+- Creates and saves a `User` object to the database.
+- Returns the created `User` object.
+
+Running the script should display the IDs of the newly added users.
