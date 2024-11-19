@@ -48,3 +48,14 @@ Develop the `find_user_by` method in the `DB` class to:
     - `InvalidRequestError` for invalid query arguments.
 
 The script should demonstrate successful user retrieval, handle cases where no user is found, and handle invalid query arguments gracefully.
+
+### Task 3: Update user
+
+Create the `update_user` method in the `DB` class to:
+
+- Accept a `user_id` (integer) and arbitrary keyword arguments.
+- Use `find_user_by` to locate the user and update their attributes.
+- Commit the changes to the database.
+- Raise a `ValueError` if an invalid attribute is passed.
+
+The script should demonstrate successful user updates and raise an error for invalid attributes.
