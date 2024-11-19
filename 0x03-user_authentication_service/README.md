@@ -59,3 +59,12 @@ Create the `update_user` method in the `DB` class to:
 - Raise a `ValueError` if an invalid attribute is passed.
 
 The script should demonstrate successful user updates and raise an error for invalid attributes.
+
+### Task 4: Hash password
+
+Create a `_hash_password` method to:
+
+- Accept a password string as input.
+- Return a salted hash of the password as bytes, using `bcrypt.hashpw`.
+
+The script should demonstrate the method returning a correctly hashed password in bytes.
