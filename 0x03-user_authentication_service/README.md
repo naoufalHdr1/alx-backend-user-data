@@ -68,3 +68,15 @@ Create a `_hash_password` method to:
 - Return a salted hash of the password as bytes, using `bcrypt.hashpw`.
 
 The script should demonstrate the method returning a correctly hashed password in bytes.
+
+### Task 5: 
+
+Add a `register_user` method to the Auth class that:
+
+- Accepts `email` and `password`.
+- Raises `ValueError: User <email> already exists` if the email is already in use.
+- Hashes the password with `_hash_password`, saves the user via `self._db`, and returns the `User` object if the email is new.
+
+Output;
+- Returns the `User` object if created.
+- Raises `ValueError` if the email already exists.
