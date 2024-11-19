@@ -111,7 +111,7 @@ Output:
 HTTP status: `400`
 
 
-### Task 8:
+### Task 8: Credentials validation
 
 Develop the `valid_login` method in the `Auth` class to:
 
@@ -124,3 +124,13 @@ Develop the `valid_login` method in the `Auth` class to:
 Output:
 - Matching credentials: `True`.
 - Incorrect credentials or unknown email: `False`.
+
+### Task 9: Generate UUIDs
+
+Create the `_generate_uuid` method in the `auth` module that:
+
+- Generates a new `UUID` using the `uuid` module.
+- Returns the string representation of the new UUID.
+
+Output:
+- The method should return a valid UUID string when called.
