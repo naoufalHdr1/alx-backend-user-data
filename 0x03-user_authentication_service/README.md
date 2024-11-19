@@ -134,3 +134,18 @@ Create the `_generate_uuid` method in the `auth` module that:
 
 Output:
 - The method should return a valid UUID string when called.
+
+### Task 10: Get Session ID
+
+Create the `create_session` method in the `Auth` class that:
+
+- Takes an `email` string as an argument.
+- Finds the user corresponding to the given email.
+- Generates a new UUID using the `_generate_uuid` method.
+- Stores the new UUID as the `session_id` for the user in the database using a public method from `self._db`.
+- Returns the session ID as a string.
+- If the user does not exist, the method should return `None`.
+
+Output:
+- If the user is found and a session is created, return the new session ID (a string).
+- If the user is not found, return `None`.
