@@ -69,7 +69,7 @@ Create a `_hash_password` method to:
 
 The script should demonstrate the method returning a correctly hashed password in bytes.
 
-### Task 5: 
+### Task 5: Register user
 
 Add a `register_user` method to the Auth class that:
 
@@ -80,3 +80,14 @@ Add a `register_user` method to the Auth class that:
 Output;
 - Returns the `User` object if created.
 - Raises `ValueError` if the email already exists.
+
+### Task 6: Basic Flask app
+
+Create a Flask app with:
+
+- A single GET route ("/") that returns a JSON response: {"message": "Bienvenue"}
+- Code to run the app on host="0.0.0.0" and port=5000.
+
+Output:
+
+- When accessing http://0.0.0.0:5000/, the response is: {"message": "Bienvenue"}
