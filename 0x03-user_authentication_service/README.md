@@ -109,3 +109,18 @@ Output:
 {"message": "email already registered"}
 ```
 HTTP status: `400`
+
+
+### Task 8:
+
+Develop the `valid_login` method in the `Auth` class to:
+
+- Accept `email` and `password` as arguments.
+- Locate the user by their email.
+    - If the user exists, validate the password using `bcrypt.checkpw`.
+    - Return `True` if the password matches, otherwise return `False`.
+- If the user does not exist, return `False`.
+
+Output:
+- Matching credentials: `True`.
+- Incorrect credentials or unknown email: `False`.
