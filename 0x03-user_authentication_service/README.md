@@ -91,3 +91,21 @@ Create a Flask app with:
 Output:
 
 - When accessing http://0.0.0.0:5000/, the response is: {"message": "Bienvenue"}
+
+### Task 7: Register user
+
+Create a `POST /users` route that:
+
+- Expects form data fields: `"email"` and `"password"`.
+- Uses the `Auth` class to register a new user.
+
+Output:
+- Successful registration:
+```json
+{"email": "bob@me.com", "message": "user created"}
+```
+- Duplicate registration:
+```json
+{"message": "email already registered"}
+```
+HTTP status: `400`
