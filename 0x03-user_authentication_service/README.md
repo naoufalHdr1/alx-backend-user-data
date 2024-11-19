@@ -28,7 +28,7 @@ Build a `User` model mapped to the `users` table with these attributes:
 
 The script should print the table name and column details.
 
-### Task 1:
+### Task 1: Create user
 
 Complete the `DB` class by implementing the `add_user` method. This method:
 
@@ -37,3 +37,14 @@ Complete the `DB` class by implementing the `add_user` method. This method:
 - Returns the created `User` object.
 
 Running the script should display the IDs of the newly added users.
+
+### Task 2: Find user
+
+Develop the `find_user_by` method in the `DB` class to:
+
+- Accept arbitrary keyword arguments for filtering rows in the `users` table.
+- Return the first matching row or raise:
+    - `NoResultFound` if no matching row is found.
+    - `InvalidRequestError` for invalid query arguments.
+
+The script should demonstrate successful user retrieval, handle cases where no user is found, and handle invalid query arguments gracefully.
