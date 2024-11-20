@@ -237,3 +237,21 @@ Create the `update_password` function in the `app` module to:
 
 Output:
 - The function should properly handle both valid and invalid tokens, ensuring the password is updated or the appropriate error is returned.
+
+### Task 20: End-to-end integration test `#Advanced`
+
+Create a `main.py` module to test your Flask app's endpoints using the `requests` library. Each function will make HTTP requests to corresponding endpoints and validate responses with assertions.
+
+Functions to Implement:
+1. `register_user(email, password)`: Tests user registration (`/register`).
+2. `log_in_wrong_password(email, password)`: Tests login with incorrect credentials (`/sessions`).
+3. `log_in(email, password)`: Tests login with correct credentials and returns session ID.
+4. `profile_unlogged()`: Tests access to `/profile` without a session (should fail).
+5. `profile_logged(session_id)`: Tests access to `/profile` with a valid session.
+6. `log_out(session_id)`: Tests logging out (`/sessions`).
+7. `reset_password_token(email)`: Gets a reset token (`/reset_password`).
+8. `update_password(email, reset_token, new_password)`: Updates the user's password.
+
+Outcome:
+- Running `python main.py` tests all endpoints.
+- No output means all tests passed; failures raise an `AssertionError`.
