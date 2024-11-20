@@ -181,3 +181,13 @@ Implement a profile function in the Flask app to handle the `GET /profile` route
 - The request will contain the session ID in the cookie.
 - If a valid user is found using the session ID, respond with a 200 HTTP status and a JSON payload containing the user's email.
 - If the session ID is invalid or the user does not exist, return a 403 HTTP status.
+
+### Task 16: Generate reset password token
+
+Create the profile function to handle the `GET /profile` route:
+- The function should expect the session ID in the request's cookies.
+- If the session ID is valid and corresponds to an existing user, return a JSON response with the user's email and a 200 HTTP status.
+- If the session ID is invalid or the user does not exist, return a 403 HTTP status.
+
+Output:
+- The script should return the user's email when the session ID is valid and respond with a 403 status if the session ID is invalid or not found.
