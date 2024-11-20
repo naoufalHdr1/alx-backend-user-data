@@ -149,3 +149,9 @@ Create the `create_session` method in the `Auth` class that:
 Output:
 - If the user is found and a session is created, return the new session ID (a string).
 - If the user is not found, return `None`.
+
+### Task 11: Log in
+
+Implement a `login` function for the `POST /sessions` route:
+- It should validate the email and password, create a session if valid, and return a success message with the session ID in a cookie.
+- If credentials are incorrect, return a 401 Unauthorized status.
