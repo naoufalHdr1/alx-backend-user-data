@@ -223,3 +223,17 @@ Create the `update_password` method in the `Auth` class to:
 Output:
 - The method should update the user's password and reset the token. If no user is found with the provided `reset_token`, raise a `ValueError`.
 
+### Task 19: Update password end-point
+
+Create the `update_password` function in the `app` module to:
+- Handle the `PUT /reset_password` route.
+- The request should contain form data with fields: `"email"`, `"reset_token"`, and `"new_password"`.
+- Use the `reset_token` to find the corresponding user.
+- If the token is invalid (no user found or token mismatch), catch the exception and respond with a 403 HTTP status code.
+- If the token is valid, update the user's password and return a 200 HTTP status code with the following JSON payload:
+```json
+{"email": "<user email>", "message": "Password updated"}
+```
+
+Output:
+- The function should properly handle both valid and invalid tokens, ensuring the password is updated or the appropriate error is returned.
