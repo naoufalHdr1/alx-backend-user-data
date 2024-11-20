@@ -167,3 +167,10 @@ Implement the `get_user_from_session_id` method in the `Auth` class:
 Implement the `destroy_session` method in the `Auth` class:
 - It should take a `user_id` integer, find the corresponding `user`, and set the session ID to `None`.
 - Ensure only public methods of `self._db` are used.
+
+### Task 14: Log out
+
+Implement a logout function in the Flask app to handle the `DELETE /sessions` route:
+- The request will contain the session ID in the cookie.
+- If a valid user is found with the session ID, destroy the session and redirect to the home page (`GET /`).
+- If the session ID is invalid or no user is found, return a 403 HTTP status.
