@@ -175,14 +175,7 @@ Implement a logout function in the Flask app to handle the `DELETE /sessions` ro
 - If a valid user is found with the session ID, destroy the session and redirect to the home page (`GET /`).
 - If the session ID is invalid or no user is found, return a 403 HTTP status.
 
-### Task 15: User profile
-
-Implement a profile function in the Flask app to handle the `GET /profile` route:
-- The request will contain the session ID in the cookie.
-- If a valid user is found using the session ID, respond with a 200 HTTP status and a JSON payload containing the user's email.
-- If the session ID is invalid or the user does not exist, return a 403 HTTP status.
-
-### Task 16: Generate reset password token
+### Task 15: User Profile
 
 Create the profile function to handle the `GET /profile` route:
 - The function should expect the session ID in the request's cookies.
@@ -192,7 +185,7 @@ Create the profile function to handle the `GET /profile` route:
 Output:
 - The script should return the user's email when the session ID is valid and respond with a 403 status if the session ID is invalid or not found.
 
-### Task 17: Get reset password token
+### Task 16: Generate reset password token
 
 Create the `get_reset_password_token` method in the `Auth` class to:
 - Accept an email string as an argument.
@@ -202,3 +195,31 @@ Create the `get_reset_password_token` method in the `Auth` class to:
 
 Output:
 The script should return a UUID as the reset token for the user, and raise a `ValueError` if the user does not exist.
+
+### Task 17: Get reset password token
+
+Create the `get_reset_password_token` function to:
+- Respond to the `POST /reset_password` route.
+- Expect form data with an "email" field.
+- If the email is not registered, respond with a 403 status code.
+- If the email is registered, generate a reset token, update the user's `reset_token` field, and respond with a 200 HTTP status along with the following JSON payload:
+```json
+{"email": "<user email>", "reset_token": "<reset token>"}
+```
+
+Output:
+- The script should return a 200 status with a reset token if the email is valid, or a 403 status if the email is not found.
+
+### Task 18: Update password
+
+Create the `update_password` method in the `Auth` class to:
+
+- Accept a `reset_token` string and a `password` string as arguments.
+- Use the `reset_token` to find the corresponding user.
+- If the user does not exist or the token is invalid, raise a `ValueError` exception.
+- If the user is found, hash the new password and update the user's `hashed_password` field with the new hash.
+- Set the `reset_token` field to `None` to indicate the password has been reset.
+
+Output:
+- The method should update the user's password and reset the token. If no user is found with the provided `reset_token`, raise a `ValueError`.
+
