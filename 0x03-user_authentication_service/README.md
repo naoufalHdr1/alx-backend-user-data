@@ -161,3 +161,9 @@ Implement a `login` function for the `POST /sessions` route:
 Implement the `get_user_from_session_id` method in the `Auth` class:
 - It should take a `session_id` string, check for the corresponding user in the database, and return the user object.
 - If the session ID is `None` or no user is found, return `None`. Only use public methods of `self._db`.
+
+### Task 13: Destroy session
+
+Implement the `destroy_session` method in the `Auth` class:
+- It should take a `user_id` integer, find the corresponding `user`, and set the session ID to `None`.
+- Ensure only public methods of `self._db` are used.
