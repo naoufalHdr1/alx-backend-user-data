@@ -191,3 +191,14 @@ Create the profile function to handle the `GET /profile` route:
 
 Output:
 - The script should return the user's email when the session ID is valid and respond with a 403 status if the session ID is invalid or not found.
+
+### Task 17: Get reset password token
+
+Create the `get_reset_password_token` method in the `Auth` class to:
+- Accept an email string as an argument.
+- Find the user corresponding to the email.
+- If the user does not exist, raise a `ValueError` exception.
+- If the user exists, generate a new UUID, update the user's `reset_token` field in the database, and return the token.
+
+Output:
+The script should return a UUID as the reset token for the user, and raise a `ValueError` if the user does not exist.
