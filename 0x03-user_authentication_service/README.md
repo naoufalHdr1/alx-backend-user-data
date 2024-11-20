@@ -155,3 +155,9 @@ Output:
 Implement a `login` function for the `POST /sessions` route:
 - It should validate the email and password, create a session if valid, and return a success message with the session ID in a cookie.
 - If credentials are incorrect, return a 401 Unauthorized status.
+
+### Task 12: Find user by session ID
+
+Implement the `get_user_from_session_id` method in the `Auth` class:
+- It should take a `session_id` string, check for the corresponding user in the database, and return the user object.
+- If the session ID is `None` or no user is found, return `None`. Only use public methods of `self._db`.

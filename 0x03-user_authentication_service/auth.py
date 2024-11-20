@@ -40,7 +40,8 @@ class Auth:
             raise ValueError(f"User {email} already exists")
         except NoResultFound:
             hashed_password = _hash_password(password)
-            self._db.add_user(email, hashed_password)
+            new_user = self._db.add_user(email, hashed_password)
+            return new_user
 
     def valid_login(self, email: str, password: str) -> bool:
         """ Check if the provided email and password are valid.
@@ -63,5 +64,14 @@ class Auth:
             session_id = _generate_uuid()
             self._db.update_user(user.id, session_id=session_id)
             return session_id
+        except Exception:
+            return None
+
+    def get_user_from_session_id(self, session_id: str) -> User:
+        """ Retrieve a User object based on a given session ID.
+        """
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            return user
         except Exception:
             return None
