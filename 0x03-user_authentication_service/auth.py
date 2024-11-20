@@ -80,4 +80,6 @@ class Auth:
         """ Destroy the session for the given user by setting
         the session_id to None.
         """
+        if user_id is None:
+            return None
         self._db.update_user(user_id, session_id=None)
