@@ -174,3 +174,10 @@ Implement a logout function in the Flask app to handle the `DELETE /sessions` ro
 - The request will contain the session ID in the cookie.
 - If a valid user is found with the session ID, destroy the session and redirect to the home page (`GET /`).
 - If the session ID is invalid or no user is found, return a 403 HTTP status.
+
+### Task 15: User profile
+
+Implement a profile function in the Flask app to handle the `GET /profile` route:
+- The request will contain the session ID in the cookie.
+- If a valid user is found using the session ID, respond with a 200 HTTP status and a JSON payload containing the user's email.
+- If the session ID is invalid or the user does not exist, return a 403 HTTP status.
